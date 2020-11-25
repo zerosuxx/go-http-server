@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"../utility"
 	"encoding/json"
+	"github.com/zerosuxx/go-http-server/go-http-server/utility"
 	"io"
 	"io/ioutil"
 	"log"
@@ -10,8 +10,8 @@ import (
 )
 
 type CommandHandler struct {
-	Shell *utility.Shell
-	Input *io.PipeReader
+	Shell  *utility.Shell
+	Input  *io.PipeReader
 	Output *io.PipeWriter
 }
 
@@ -56,8 +56,8 @@ func (handler *CommandHandler) Handle(res http.ResponseWriter, req *http.Request
 func CreateCommandHandler() *CommandHandler {
 	pipeReader, pipeWriter := io.Pipe()
 	return &CommandHandler{
-		Shell: &utility.Shell{},
-		Input: pipeReader,
+		Shell:  &utility.Shell{},
+		Input:  pipeReader,
 		Output: pipeWriter,
 	}
 }
